@@ -28,11 +28,11 @@ jobs:
         env:
           ZAP_DOCKER_IMAGE: 'ghcr.io/zaproxy/zaproxy:stable'
 
-      - name: Upload ZAP HTML Report
-        uses: actions/upload-artifact@v3.1.3
-        with:
-          name: zap-scan-report
-          path: report_html.html
+     # - name: Upload ZAP HTML Report
+     #   uses: actions/upload-artifact@v3.1.3
+     #   with:
+      #    name: zap-scan-report
+      #    path: report_html.html
 
       - name: Semgrep Scan
         uses: returntocorp/semgrep-action@v1

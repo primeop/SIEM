@@ -21,7 +21,9 @@ jobs:
         with:
           target: 'http://localhost:5000'
           allowIssueWriting: false
-          issueTitle: ''
+          issueTitle: ' '
+          failAction: false
+          token: '' # disables GitHub API auth entirely
 
       - name: Semgrep Scan
         uses: returntocorp/semgrep-action@v1

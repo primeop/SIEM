@@ -11,20 +11,25 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
+      - name: Build & Run App
+        run: |
+          docker build -t secure-app containers/
+          docker run -d -p 5000:5000 secure-app
+
+      - name: OWASP ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.8.0
+        with:
+          target: 'http://localhost:5000'
+
       - name: Semgrep Scan
         uses: returntocorp/semgrep-action@v1
         with:
           config: 'auto'
 
-      - name: OWASP ZAP Scan
-        uses: zaproxy/action-baseline@v0.7.0
-        with:
-          target: 'http://localhost:5000'
-
       - name: Trivy Container Scan
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/your/image:tag'
+          image-ref: 'secure-app'
 
       - name: Generate SBOM
-        run: trivy image --format cyclonedx --output sbom/sbom.cdx.json docker.io/your/image:tag
+        run: trivy image --format cyclonedx --output sbom/sbom.cdx.json secure-app

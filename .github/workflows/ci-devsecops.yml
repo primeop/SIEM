@@ -7,6 +7,7 @@ on:
 jobs:
   devsecops:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -20,6 +21,8 @@ jobs:
         uses: zaproxy/action-baseline@v0.8.0
         with:
           target: 'http://localhost:5000'
+        env:
+          ZAP_DOCKER_IMAGE: 'ghcr.io/zaproxy/zaproxy:stable'
 
       - name: Semgrep Scan
         uses: returntocorp/semgrep-action@v1

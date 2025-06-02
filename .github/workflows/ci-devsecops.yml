@@ -23,7 +23,6 @@ jobs:
           allowIssueWriting: false
           issueTitle: ' '
           failAction: false
-          token: '' # disables GitHub API auth entirely
 
       - name: Semgrep Scan
         uses: returntocorp/semgrep-action@v1

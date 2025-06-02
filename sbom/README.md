@@ -1,0 +1,1 @@
+This folder stores generated SBOM files in CycloneDX format.

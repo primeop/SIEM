@@ -1,0 +1,30 @@
+name: DevSecOps CI Pipeline
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  devsecops:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Semgrep Scan
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: 'auto'
+
+      - name: OWASP ZAP Scan
+        uses: zaproxy/action-baseline@v0.7.0
+        with:
+          target: 'http://localhost:5000'
+
+      - name: Trivy Container Scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'docker.io/your/image:tag'
+
+      - name: Generate SBOM
+        run: trivy image --format cyclonedx --output sbom/sbom.cdx.json docker.io/your/image:tag

@@ -13,7 +13,7 @@ This project implements a fully automated Secure Software Development Lifecycle 
 
 ## 🏗️ DevSecOps CI/CD Architecture
 
-  ![DEvSecOps Architecture](docs/devsecops-pipeline.png)
+  ![DEvSecOps Architecture](devsecops-pipeline.png)
 
 - PR triggers pipeline
 - Semgrep + SonarQube perform static scans

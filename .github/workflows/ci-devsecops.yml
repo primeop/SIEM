@@ -21,6 +21,7 @@ jobs:
         with:
           target: 'http://localhost:5000'
           allowIssueWriting: false
+          issueTitle: ''
 
       - name: Semgrep Scan
         uses: returntocorp/semgrep-action@v1

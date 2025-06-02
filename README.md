@@ -9,7 +9,6 @@ This project demonstrates a CI/CD-integrated secure software development lifecyc
 - 📦 **Container Scanning**: Trivy
 - 📜 **SBOM Generation**: CycloneDX JSON
 - 🔁 **CWE/Severity Enrichment**: Python script for tagging
-- 🛡️ **Supply Chain Integrity**: SLSA Compliance (optional)
 
 ## 📂 Folder Breakdown
 
